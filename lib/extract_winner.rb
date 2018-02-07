@@ -1,6 +1,6 @@
 class ExtractWinner
 
-  def initialize(strings)
+  def initialize(strings = [])
     @inputs = strings
     @outputs = []
   end
@@ -22,6 +22,7 @@ class ExtractWinner
     return nil unless (item =~ /[[:alpha:]]/).nil?
 
     possibilities = []
+    nil
   end
 
 end
