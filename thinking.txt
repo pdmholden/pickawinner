@@ -1,0 +1,21 @@
+Brainstorming
+-------------
+
+start with two-digit numbers
+if encounter duplicate of a two-digit number,
+  use digits separately as picks
+if single digit >= 6, it *must* be used alone
+if any character has to be discarded, fail
+every time settle on a pick, need to check duplicates OR
+  check for duplicates at the end
+define calculation to know how many two-digit picks must
+  be in the result to use every char
+  strlen - 7 = number of two-digit picks required
+if there are > 10 digits, there are guaranteed to be
+  single-digit duplicates
+"3462..." -> 3, 46, 2 OR 34, 6, 2 OR 3, 4, 6, 2
+
+Efficiency
+----------
+
+
