@@ -43,7 +43,7 @@ describe 'ExtractWinner' do
         let(:string) { "472844278465445" }
 
         it 'returns nil' do
-          expect(subject).to be_nil
+          expect(subject).to eq ""
         end
       end
 
@@ -51,7 +51,7 @@ describe 'ExtractWinner' do
         let(:string) { "569815571556" }
 
         it 'returns nil' do
-          expect(subject).to be_nil
+          expect(subject).to eq ""
         end
       end
     end
