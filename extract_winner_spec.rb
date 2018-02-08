@@ -27,6 +27,7 @@ describe 'ExtractWinner' do
         let(:string) { "1234567" }
 
         it 'returns the 7 picks' do
+          expect(subject).to eq "1 2 3 4 5 6 7"
         end
       end
 
@@ -34,6 +35,7 @@ describe 'ExtractWinner' do
         let(:string) { "4938532894754" }
 
         it 'returns the 7 picks' do
+          expect(subject).to eq "49 38 53 28 9 47 54"
         end
       end
     end
