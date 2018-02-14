@@ -27,11 +27,10 @@ class ExtractWinner
 
     possibilities = [] # Array.new(7)
     two_digit_picks = 0
-    failed = false
     try_one_digit_pick = true
     digits = item.chars.map { |x| x.to_i }
 
-    while(!failed && digits.length > 0) do
+    while(digits.length > 0) do
       try_one_digit_pick = true
 
       if try_two_digit_pick?(two_digit_picks, item.length)
@@ -50,13 +49,11 @@ class ExtractWinner
         number = digits.shift
         if validate_one_digit_pick(number)
           possibilities << number
-        else
-          failed = true
         end
       end
     end
 
-    result = if validate_result(possibilities) && !failed
+    result = if validate_result(possibilities)
       possibilities.join(" ")
     else
       ""
