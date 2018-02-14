@@ -65,6 +65,14 @@ describe 'ExtractWinner' do
         end
       end
 
+      describe 'when there are not enough characters' do
+        let(:string) { '123' }
+
+        it 'returns nil' do
+          expect(subject).to eq ""
+        end
+      end
+
       describe 'when there are duplicate numbers' do
         let(:string) { "569815571556" }
 
@@ -91,6 +99,21 @@ describe 'ExtractWinner' do
 
       describe 'when there is a leading 0' do
         let(:string) { "0123456" }
+
+        it 'returns nil' do
+          expect(subject).to eq ""
+        end
+      end
+
+      describe 'when letters are included' do
+        let(:string) { "765432a" }
+        it 'returns nil' do
+          expect(subject).to eq ""
+        end
+      end
+
+      describe 'when 0 interferes with two-digit picks' do
+        let(:string) { "110234567" }
 
         it 'returns nil' do
           expect(subject).to eq ""

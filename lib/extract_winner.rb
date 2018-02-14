@@ -70,6 +70,7 @@ class ExtractWinner
   def validate_two_digit_pick(number)
     return false unless number
     return false if number > MAX_PICK
+    return false if number < 10
     true
   end
 
