@@ -38,6 +38,22 @@ describe 'ExtractWinner' do
           expect(subject).to eq "49 38 53 28 9 47 54"
         end
       end
+
+      describe 'another test' do
+        let(:string) { "34624928313" }
+
+        it 'returns the 7 picks' do
+          expect(subject).to eq "34 6 24 9 28 31 3"
+        end
+      end
+
+      describe 'and some possible two-digit picks are over the limit' do
+        let(:string) { "9876543210" }
+
+        it 'returns the 7 picks' do
+          expect(subject).to eq "9 8 7 6 54 32 10"
+        end
+      end
     end
 
     context 'strings are invalid' do
@@ -56,6 +72,31 @@ describe 'ExtractWinner' do
           expect(subject).to eq ""
         end
       end
+
+      describe 'when there are duplicate singles' do
+        let(:string) { "34624928893" }
+
+        it 'returns nil' do
+          expect(subject).to eq ""
+        end
+      end
+
+      describe 'when there are not enough two-digit picks' do
+        let(:string) { "98769876" }
+
+        it 'returns nil' do
+          expect(subject).to eq ""
+        end
+      end
+
+      describe 'when there is a leading 0' do
+        let(:string) { "0123456" }
+
+        it 'returns nil' do
+          expect(subject).to eq ""
+        end
+      end
+
     end
   end
 end
