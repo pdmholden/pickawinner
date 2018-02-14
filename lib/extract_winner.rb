@@ -84,8 +84,4 @@ class ExtractWinner
     possibilities.length == 7 && unique_picks.length == 7
   end
 
-  def duplicate?(number, possibilities)
-    return true if possibilities.include?(number)
-  end
-
 end
