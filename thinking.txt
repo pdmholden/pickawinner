@@ -18,4 +18,36 @@ if there are > 10 digits, there are guaranteed to be
 Efficiency
 ----------
 
+The #process_input method traverses the string once to pick
+the numbers, which is O(n). Some characters in the input
+are checked twice where attempting to use them as part of a
+two-digit pick fails. This is a constant of 2, so the initial
+traversal is O(2n).
 
+The #process_input also traverses the ouput string to find
+duplicates when the selection is complete, using Array#uniq
+which is also O(n) as it uses a hash to check for duplicates.
+
+The overall complexity is O(2n) + O(n) = O(n)
+
+Other
+-----
+
+Preventing an infinite loop is a bit tricky. If a two-digit
+pick fails (ie, the value is out of range) then we want to
+re-try each of the two digits as possible single-digit picks.
+With certain inputs this can cause an infinite loop where
+#process_input tries repeatedly the same two-digit pick. This
+is why trying a single-digit pick is conditional on either
+failing the two-digit pick attempt, or when no more two-digit
+picks are needed. There is probably a cleaner way to implement
+this to reveal the code's intention.
+
+Two-digit picks are chosen as the starting point. When the
+leading digit of a potential two-digit pick is invalid (ie, for
+a two-digit number > 59) the leading digit can still be used
+as a single-digit pick. All single-digit picks (except 0) are
+valid so the same logic is not needed. The number of two-digit
+picks needed to meet the requirements is determined from the
+length of the input string (ie, length - 7, where length is
+<= 14).
