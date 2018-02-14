@@ -28,22 +28,31 @@ class ExtractWinner
     possibilities = [] # Array.new(7)
     two_digit_picks = 0
     failed = false
+    try_one_digit_pick = true
     digits = item.chars.map { |x| x.to_i }
 
     while(!failed && digits.length > 0) do
+      try_one_digit_pick = true
+
       if try_two_digit_pick?(two_digit_picks, item.length)
         number = digits.first(2).join.to_i
-        if validate_two_digit_pick(number, possibilities)
+        try_one_digit_pick = if validate_two_digit_pick(number)
           digits.shift(2)
           possibilities << number
           two_digit_picks += 1
+          false
+        else
+          true
         end
       end
-      number = digits.shift
-      if validate_one_digit_pick(number, possibilities)
-        possibilities << number
-      else
-        failed = true
+
+      if try_one_digit_pick
+        number = digits.shift
+        if validate_one_digit_pick(number)
+          possibilities << number
+        else
+          failed = true
+        end
       end
     end
 
@@ -58,22 +67,25 @@ class ExtractWinner
     two_digit_pick_count < input_length - 7
   end
 
-  def validate_result(possibilities)
-    possibilities.length == 7
-  end
-
-  def validate_two_digit_pick(number, possibilities)
+  def validate_two_digit_pick(number)
     return false unless number
     return false if number > MAX_PICK
-    return false if possibilities.include?(number)
     true
   end
 
-  def validate_one_digit_pick(number, possibilities)
+  def validate_one_digit_pick(number)
     return false unless number
     return false if number < MIN_PICK
-    return false if possibilities.include?(number)
     true
+  end
+
+  def validate_result(possibilities)
+    unique_picks = possibilities.uniq
+    possibilities.length == 7 && unique_picks.length == 7
+  end
+
+  def duplicate?(number, possibilities)
+    return true if possibilities.include?(number)
   end
 
 end
