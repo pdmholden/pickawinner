@@ -15,6 +15,19 @@ if there are > 10 digits, there are guaranteed to be
   single-digit duplicates
 "3462..." -> 3, 46, 2 OR 34, 6, 2 OR 3, 4, 6, 2
 
+Running
+-------
+
+On 2018-02-22 I added a script so that ExtractWinner can be
+run from the command line as follows:
+
+./pick.rb 38383939 300383883 77873938
+
+To fully test the code, I previously wrote specs which
+can be run using RSpec:
+
+rspec extract_winner_spec.rb
+
 Efficiency
 ----------
 

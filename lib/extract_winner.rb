@@ -9,6 +9,11 @@ class ExtractWinner
   end
 
   def print_picks
+    @outputs.each_with_index do |output, i|
+      unless output == ""
+        puts "#{@inputs[i]} -> #{output}"
+      end
+    end
   end
 
   def pick
