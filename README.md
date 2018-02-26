@@ -1,4 +1,4 @@
-Pick suitable lotto numbers from input strings
+Given a string of digits, choose _exactly_ 7 numbers in the range 1-59 for lotto picks. Strings with leftover numbers should fail, as should strings with an insufficient number of digits.
 
 Run the program as follows:
 
